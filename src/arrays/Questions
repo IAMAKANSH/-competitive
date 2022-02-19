@@ -1,0 +1,31 @@
+1.two sum problem
+Given an array of integers return indices of the two numbers such that they add up to a
+specific target
+You may assume that each input would have exactly one solution and you may not use the same
+element twice
+Example::
+given numbers=[2,7,11,15]
+target=9
+
+because numbers[0]+numbers[1]=2+7=9
+return [0,1]
+
+
+2.container with most water
+Given  n non-negative integers a1,a2.....aN where each represent a point at coordinate (i,aj), n vertical lines
+are drawn such that two endpoints of line i is at (i,aj) and (i,0) Find two lines which together with x-axis
+forms container such that the container contains the most water
+you may not slant the container and n is least 2
+
+Example 1,8,6,2,5,4,8,3,7
+Max area of water is 49
+
+3.find the kth largest element in the unsorted array
+for example::
+input [3,2,1,5,6,4]
+k=2
+ans=5
+
+input [3,2,3,1,2,4,5,5,6]
+k=4
+ans:4
