@@ -8,7 +8,7 @@ public class Question6 {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the rows");
         int rows=sc.nextInt();
-        int[][] metric=new int[rows][5];
+        int[][] metric=new int[rows][4];
         for(int j=0;j<rows;j++) {
             Scanner sc1=new Scanner(System.in);
             String numbers = sc1.nextLine();
@@ -47,7 +47,9 @@ public class Question6 {
     private static void dfs(int[][] metric, boolean[][] visited, int i, int j) {
 
         if(i<0 || j<0 || visited[i][j] || metric[i][j]==0 || i>metric.length || j>metric[0].length)
+        {
             return;
+        }
 
         visited[i][j]=true;
         dfs(metric,visited,i+1,j);
