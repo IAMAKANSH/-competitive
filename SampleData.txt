@@ -1,0 +1,4 @@
+9,number9,java27,@123,8,Python,Sample11Text
+6,number6,java73,@4,8,Python,SampleText
+13,%%%9,!***2,0000,@010,HelloWorld!3,14
+6,number6,java73,@4,8,jab!!!2,Akas%1

@@ -42,6 +42,26 @@ public class Day16Question1 {
         node.next=null;
         node.previous=null;
     }
+    public void insert(Node2 nodePosition,Node2 givenNode)
+    {
+        if(this.head==givenNode && this.tail==givenNode)
+        {
+            return;
+        }
+        this.removeElement(givenNode);
+        givenNode.previous=nodePosition.previous;
+        givenNode.next=nodePosition;
+
+        if(nodePosition==this.head)
+        {
+            this.head=givenNode;
+        }
+        else
+        {
+            nodePosition.previous.next=givenNode;
+        }
+        nodePosition.previous=givenNode;
+    }
     public static void linkNode(Node2 n1,Node2 n2)
     {
         n1.next=n2;
@@ -63,8 +83,11 @@ public class Day16Question1 {
         day16Question1.tail=n5;
         day16Question1.size=5;
         day16Question1.display();
+//        System.out.println("==========================");
+//        day16Question1.removeElement(n3);
+//        day16Question1.display();
         System.out.println("==========================");
-        day16Question1.removeElement(n3);
+        day16Question1.insert(n2,n3);
         day16Question1.display();
 
     }
