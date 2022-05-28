@@ -1,6 +1,7 @@
 package challenge;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.Queue;
 
 public class Day19Question1 {
 
@@ -36,6 +37,15 @@ public class Day19Question1 {
             }
         }
         System.out.println(tree);
+
+       List<Integer> res=tree.breadth();
+        System.out.println(res);
+        List<Integer>  inOrder=tree.dpsInOrder();
+        System.out.println(inOrder);
+        List<Integer>  preOrder=tree.dpsPreOrder();
+        List<Integer>  postOrder=tree.dpsPostOrder();
+        System.out.println(preOrder);
+        System.out.println(postOrder);
     }
 
 }
@@ -211,5 +221,79 @@ class BinarySearchTree
         return "BinarySearchTree{" +
                 "root=" + root +
                 '}';
+    }
+
+
+    public List<Integer> breadth() {
+        List<Integer> response=new ArrayList<>();
+        Queue<NodeTree> queue=new LinkedList<>();
+        if (this.root == null)
+            return Collections.emptyList();
+
+        queue.add(this.root);
+        while(!queue.isEmpty()){
+            NodeTree node = queue.remove();
+            response.add(node.value);
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+        return response;
+    }
+
+    public List<Integer> dpsInOrder()
+    {
+        List<Integer> response=new ArrayList<>();
+        if (this.root==null)
+            return Collections.emptyList();
+
+        NodeTree current=this.root;
+        trav(current,response);
+        return response;
+    }
+
+    public List<Integer> dpsPreOrder()
+    {
+        List<Integer> response=new ArrayList<>();
+        if (this.root==null)
+            return Collections.emptyList();
+
+        NodeTree current=this.root;
+        preTrav(current,response);
+        return response;
+    }
+
+    public List<Integer> dpsPostOrder()
+    {
+        List<Integer> response=new ArrayList<>();
+        if (this.root==null)
+            return Collections.emptyList();
+
+        NodeTree current=this.root;
+        postTrav(current,response);
+        return response;
+    }
+    private void preTrav(NodeTree current, List<Integer> response) {
+
+        response.add(current.value);
+        if (current.left!=null)
+            preTrav(current.left,response);
+        if (current.right!=null)
+            preTrav(current.right,response);
+    }
+    private void postTrav(NodeTree current, List<Integer> response) {
+
+        if (current.left!=null)
+            postTrav(current.left,response);
+        if (current.right!=null)
+            postTrav(current.right,response);
+        response.add(current.value);
+    }
+    private void trav(NodeTree current, List<Integer> response) {
+
+        if (current.left!=null)
+            trav(current.left,response);
+        response.add(current.value);
+        if (current.right!=null)
+            trav(current.right,response);
     }
 }
