@@ -24,6 +24,8 @@ public class Day20Question1 {
 //        System.out.println(tree1);
 
         System.out.println(tree.bfs());
+        System.out.println(tree.rightView());
+        System.out.println(tree.leftView());
 
     }
 }
@@ -155,6 +157,85 @@ class BinaryTree{
                 }
             }
             response.add(height);
+        }
+        return response;
+    }
+
+
+    public List<Integer> rightView()
+    {
+        List<Integer> response=new ArrayList<>();
+        if(this.root==null)
+        {
+            return Collections.emptyList();
+        }
+        Queue<Node1> queue =new LinkedList<>();
+        Node1 node=this.root;
+        queue.add(node);
+        while (!queue.isEmpty())
+        {
+
+            int currentSize=queue.size(); //2
+            int count=0;
+            while (count<currentSize)
+            {
+                count++;
+                Node1 current=queue.remove();
+                if (count==currentSize)
+                {
+                    response.add(current.element);
+                }
+                if (current.left!=null)
+                {
+                    queue.add(current.left);
+                }
+                if (current.right!=null)
+                {
+                    queue.add(current.right);
+                }
+
+            }
+
+
+        }
+        return response;
+    }
+
+    public List<Integer> leftView()
+    {
+        List<Integer> response=new ArrayList<>();
+        if(this.root==null)
+        {
+            return Collections.emptyList();
+        }
+        Queue<Node1> queue =new LinkedList<>();
+        Node1 node=this.root;
+        queue.add(node);
+        while (!queue.isEmpty())
+        {
+
+            int currentSize=queue.size(); //2
+            int count=0;
+            while (count<currentSize)
+            {
+                count++;
+                Node1 current=queue.remove();
+                if (count==1)
+                {
+                    response.add(current.element);
+                }
+                if (current.left!=null)
+                {
+                    queue.add(current.left);
+                }
+                if (current.right!=null)
+                {
+                    queue.add(current.right);
+                }
+
+            }
+
+
         }
         return response;
     }
