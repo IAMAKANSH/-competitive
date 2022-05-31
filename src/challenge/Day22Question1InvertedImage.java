@@ -43,7 +43,7 @@ class NodeImg{
 class BinarySearchImage{
 
      NodeImg root;
-
+    int diameterMax;
     public BinarySearchImage() {
         this.root=null;
     }
@@ -154,7 +154,26 @@ class BinarySearchImage{
         return;
     }
 
+    public int diameterOfBinaryTree(NodeImg node)
+    {
+        if (node==null) {
+            return 0;
+        }
+        recursionDFS(this.root);
+        return diameterMax;
+    }
 
+    public int recursionDFS(NodeImg node)
+    {
+        if (node==null)
+            return -1;
+        int leftHeight=recursionDFS(node.left);
+        int rightHeight=recursionDFS(node.right);
+        int diameter=leftHeight+rightHeight+1+1;
+        diameterMax=Math.max(diameter,diameterMax);
+        int heightNode=Math.max(leftHeight,rightHeight)+1;
+        return heightNode;
+    }
     @Override
     public String toString() {
         return "BinarySearchImage{" +
